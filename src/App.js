@@ -11,7 +11,7 @@ export default class App extends Component {
         super(props);
         this.state = {
             items: [
-                { title: "Sample item", id: -3, isCompleted: false, tools: [] },
+                { title: "Sample item", id: -3, isCompleted: false, tools: [{ name: "TIMER", itemId: -3, id: -1 }] },
                 { title: "Sample item", id: -2, isCompleted: true, tools: [] }
             ],
             lastItemId: 0,
@@ -23,6 +23,7 @@ export default class App extends Component {
     componentDidMount() {
         //Get Data from Local Storage
         //localStorage
+        this.handleItemSelect(-3);
     }
 
     handleItemSelect = (id, e) => {
@@ -102,7 +103,6 @@ export default class App extends Component {
             });
         }
 
-
         this.setState({
             items: items,
             lastToolId: newToolId
@@ -111,17 +111,17 @@ export default class App extends Component {
 
     }
 
-    handleDelete =(itemId)=>{
-        const items = this.state.items.filter(item=>{
-            if(item.id === itemId){
+    handleDelete = (itemId) => {
+        const items = this.state.items.filter(item => {
+            if (item.id === itemId) {
                 return false;
             }
             return true;
         })
 
         this.setState({
-            items : items,
-            selectedItemTools : itemId === this.state.selectedItemId ? undefined : this.state.selectedItemTools 
+            items: items,
+            selectedItemTools: itemId === this.state.selectedItemId ? undefined : this.state.selectedItemTools
 
         })
         console.log(itemId)
@@ -129,7 +129,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="md:m-8 border-t-8 border-pink-900 shadow-lg md:shadow-2xl md:rounded-lg">
+            <div className="md:ml-32 md:mr-32 border-t-8 border-pink-900 shadow-lg md:shadow-2xl md:rounded-lg">
 
                 <div className="flex flex-col md:flex-row md:h-screen">
                     <div className="md:w-1/2 bg-gray-200">

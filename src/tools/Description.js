@@ -38,17 +38,16 @@ export default class Description extends Component {
                     <div class="col p-2">
                         <div class="box border rounded flex flex-col shadow bg-white">
                             <div className="bg-gray-400 px-3 py-2 border-b"><h3 className="text-sm text-grey-darker font-medium">Description</h3></div>
-                            <textarea placeholder="Write description here..." className="text-gray-900 flex-1 p-2 m-1 bg-transparent resize-y" onChange={this.handleChange} value={this.state.description}></textarea>
+                            <textarea placeholder="Write description here...(Click Save !)" className="text-gray-900 flex-1 p-2 m-1 bg-transparent resize-y" onChange={this.handleChange} value={this.state.description}></textarea>
                         </div>
                     </div>
                     <button className="border-2 border-red-100 text-gray-400 mx-2 px-4 rounded-full hover:bg-red-400 hover:text-white" onClick={this.handleSave}>Save</button>
                 </div>
-                : <div className="p-4">
-                    <p>
-                        <button className="block text-blue-400" onClick={this.handleEdit}>Edit </button>
+                : <div className="mt-2 p-4 bg-white">
+                    <button className="block text-blue-400 px-4 rounded-full hover:bg-blue-200 hover:text-white hover:font-bold" onClick={this.handleEdit}>Edit </button>
+                    <p className="shadow-md p-4">
                         {this.state.description}
                     </p>
-
                 </div>
         )
     }
